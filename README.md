@@ -7,5 +7,5 @@ Cualquier compilador el cual se pueda correr python, si no se tiene instalado pu
 Si se corre desde un compilador local debe instalar las bibliotecas 
 "pip install numpy pandas"
 
-Al compilar se despliega el siguiente menú y puede ir probando cada caso dependiendo el capital inicial que se ingrese de la empresa
+Al compilar se despliega el menú y puede ir probando cada caso dependiendo el capital inicial que se ingrese de la empresa
  
