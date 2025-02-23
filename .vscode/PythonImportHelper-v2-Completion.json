@@ -18,11 +18,37 @@
         "documentation": {}
     },
     {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "tkinter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
         "label": "SimuladorF",
         "kind": 6,
         "importPath": "simulador",
         "description": "simulador",
-        "peekOfCode": "class SimuladorF: \n    def __init__(self, capital_inicial):\n        self.capital = capital_inicial\n        self.historial = [capital_inicial]  # Guarda la evolución del capital\n        self.desiciones = []  # Registro de decisiones tomadas\n    #Se crea la funcion de invertir donde retorna un valor booleano dependiendo se vale la pena o no la inversión\n    def invertir(self, montoInicial, retornoEsperado):\n        if montoInicial > self.capital:\n            print(\"No hay suficiente capital para invertir\")\n            return False",
+        "peekOfCode": "class SimuladorF: \n    def __init__(self, capital_inicial):\n        self.capital = capital_inicial\n        self.historial = [capital_inicial]  # Guarda la evolución del capital\n        self.desiciones = []  # Registro de decisiones tomadas\n    def invertir(self, montoInicial, retornoEsperado):\n        if montoInicial > self.capital:\n            print(\"No hay suficiente capital para invertir\")\n            return False\n        if retornoEsperado <= 0:",
         "detail": "simulador",
         "documentation": {}
     },

@@ -1,7 +1,8 @@
-# Importamos las librerías necesarias 
 import numpy as np
 import pandas as pd
-
+import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import messagebox
 
 # Creamos la clase simulador que contiene las funciones
 class SimuladorF: 
@@ -10,13 +11,12 @@ class SimuladorF:
         self.historial = [capital_inicial]  # Guarda la evolución del capital
         self.desiciones = []  # Registro de decisiones tomadas
 
-    #Se crea la funcion de invertir donde retorna un valor booleano dependiendo se vale la pena o no la inversión
     def invertir(self, montoInicial, retornoEsperado):
         if montoInicial > self.capital:
             print("No hay suficiente capital para invertir")
             return False
         
-        if retornoEsperado <=0:
+        if retornoEsperado <= 0:
             print("La inversión no es recomendable ya que el retorno esperado es negativo o cero")
             return False
         
@@ -30,7 +30,7 @@ class SimuladorF:
         self.registrarDesicion(f"Inversión realizada: -${montoInicial} +${ganancia}")
         print("La inversión es recomendable, la puede realizar con éxito")
         return True
-    #Se crea la funcion de contratar personal donde dependiendo el presupuesto indica la cantidad de empleados que se pueden contratar
+
     def contratarPersonal(self, presupuesto):
         if presupuesto > self.capital:
             print("No tienes suficiente capital para contratar personal con ese presupuesto")
@@ -44,7 +44,6 @@ class SimuladorF:
         salarioPromedio = presupuesto / empleadosMax
         print(f"Con un presupuesto de ${presupuesto}, puedes contratar hasta {int(empleadosMax)} empleados con un salario promedio de ${salarioPromedio:.2f}.")
 
-        #Se pregunta se desea contratar y realiza actualizacion del capital imaginando que se contrata el personal
         confirmacion = input("¿Deseas proceder con la contratación? (si/no): ").strip().lower()
         if confirmacion == "si":
             self.capital -= presupuesto
@@ -53,7 +52,6 @@ class SimuladorF:
         else:
             print("Contratación cancelada.")
 
-    #Se crea la funcion de expandir operaciones donde se realiza la actualizacion del capital imaginando que se expanden las operaciones
     def expandirOperaciones(self, costo, retornoEsperado):
         if costo > self.capital:
             print("No hay suficiente capital para expandir las operaciones")
@@ -63,25 +61,31 @@ class SimuladorF:
         self.capital += gananciaFutura - costo
         self.registrarDesicion(f"Expansión de operaciones: -${costo} +${gananciaFutura}")
 
-    #Funcion que muestra el capital actual
     def mostrarCapital(self):
         print(f"Capital actual: ${self.capital:.2f}")
 
-    #Funcion que registra las decisiones tomadas por el emprendedor 
     def registrarDesicion(self, desicion):
         self.desiciones.append(desicion)
         self.historial.append(self.capital)
 
-    #Funcion que muestra el historial de decisiones tomadas por el emprendedor
     def mostrarHistorial(self):
         print("Historial de decisiones:")
         for i, decision in enumerate(self.desiciones, start=1):
             print(f"{i}. {decision}")
         
         self.mostrarCapital()
+    
+    def graficarCapital(self):
+        plt.figure(figsize=(8, 5))
+        plt.plot(self.historial, marker='o', linestyle='-', color='b', label='Capital')
+        plt.xlabel('Número de Decisiones')
+        plt.ylabel('Capital en $')
+        plt.title('Evolución del Capital')
+        plt.legend()
+        plt.grid()
+        plt.show()
 
-
-# Menu interactivo
+# Menú interactivo
 def menu():
     print("Bienvenido al Simulador de Toma de Decisiones Financieras")
     capitalInicial = float(input("Ingrese el capital inicial: "))
@@ -94,7 +98,8 @@ def menu():
         print("3. Expandir Operaciones")
         print("4. Mostrar Capital Actual")
         print("5. Mostrar Historial de Decisiones")
-        print("6. Salir")
+        print("6. Graficar Historial de Capital")
+        print("7. Salir")
 
         opcion = input("Seleccione una opción: ")
 
@@ -119,12 +124,14 @@ def menu():
             simulador.mostrarHistorial()
 
         elif opcion == "6":
+            simulador.graficarCapital()
+
+        elif opcion == "7":
             print("Saliendo... Gracias por usar el Simulador de Toma de Decisiones Financieras")
             break
 
         else:
             print("Opción inválida. Intente de nuevo.")
 
-# Ejecutamos el menú del simulador
 if __name__ == "__main__":
     menu()
