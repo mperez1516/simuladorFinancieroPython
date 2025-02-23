@@ -1,0 +1,38 @@
+[
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "SimuladorF",
+        "kind": 6,
+        "importPath": "simulador",
+        "description": "simulador",
+        "peekOfCode": "class SimuladorF: \n    def __init__(self, capital_inicial):\n        self.capital = capital_inicial\n        self.historial = [capital_inicial]  # Guarda la evolución del capital\n        self.desiciones = []  # Registro de decisiones tomadas\n    #Se crea la funcion de invertir donde retorna un valor booleano dependiendo se vale la pena o no la inversión\n    def invertir(self, montoInicial, retornoEsperado):\n        if montoInicial > self.capital:\n            print(\"No hay suficiente capital para invertir\")\n            return False",
+        "detail": "simulador",
+        "documentation": {}
+    },
+    {
+        "label": "menu",
+        "kind": 2,
+        "importPath": "simulador",
+        "description": "simulador",
+        "peekOfCode": "def menu():\n    print(\"Bienvenido al Simulador de Toma de Decisiones Financieras\")\n    capitalInicial = float(input(\"Ingrese el capital inicial: \"))\n    simulador = SimuladorF(capitalInicial)\n    while True:\n        print(\"\\nMenú:\")\n        print(\"1. Invertir\")\n        print(\"2. Contratar Personal\")\n        print(\"3. Expandir Operaciones\")\n        print(\"4. Mostrar Capital Actual\")",
+        "detail": "simulador",
+        "documentation": {}
+    }
+]
