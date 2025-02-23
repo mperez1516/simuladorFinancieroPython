@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import tkinter as tk
-from tkinter import messagebox
 
 # Creamos la clase simulador que contiene las funciones
 class SimuladorF: 
